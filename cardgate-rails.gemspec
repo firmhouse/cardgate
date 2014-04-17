@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'cardgate/rails/version'
+require 'cardgate/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "cardgate-rails"
-  spec.version       = Cardgate::Rails::VERSION
+  spec.version       = Cardgate::VERSION
   spec.authors       = ["Youri van der Lans"]
   spec.email         = ["youri@itflows.nl"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
