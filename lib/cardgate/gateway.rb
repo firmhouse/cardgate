@@ -4,6 +4,10 @@ module Cardgate
 
     class << self
       attr_accessor :environment
+
+      attr_accessor :merchant
+
+      attr_accessor :api_key
     end
 
     self.environment = :test
