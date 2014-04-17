@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Cardgate::VERSION
   spec.authors       = ["Youri van der Lans"]
   spec.email         = ["youri@itflows.nl"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = "Cardgate REST API client"
+  spec.description   = "Provides an easy way to communicate with the cardgate REST API"
+  spec.homepage      = "https://github.com/yourivdlans/cardgate-rails"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
