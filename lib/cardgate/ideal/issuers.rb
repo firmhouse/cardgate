@@ -20,7 +20,7 @@ module Cardgate
 
         issuers = response.body['issuers']
 
-        raise Cardgate::Exception, 'No issuers retrieved' if issuers.blank?
+        raise Cardgate::Exception, 'No issuers retrieved' if issuers.empty?
 
         issuers.map do |issuer|
           Cardgate::Ideal::Issuer.new(issuer['id'], issuer['name'], issuer['list'])
