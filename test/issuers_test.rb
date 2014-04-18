@@ -17,7 +17,12 @@ module CardgateTestCases
 
       issuers = Cardgate::Ideal::Issuers.list
 
-      assert issuers.first.is_a? Cardgate::Ideal::Issuer
+      issuer = issuers.first
+
+      assert issuer.is_a? Cardgate::Ideal::Issuer
+      assert_equal 121, issuer.id
+      assert_equal 'Test Issuer', issuer.name
+      assert_equal 'Short', issuer.list
     end
 
     def test_list_no_response
