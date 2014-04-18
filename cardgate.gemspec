@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cardgate/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "cardgate-rails"
+  spec.name          = "cardgate"
   spec.version       = Cardgate::VERSION
   spec.authors       = ["Youri van der Lans"]
   spec.email         = ["youri@itflows.nl"]
   spec.summary       = "Cardgate REST API client"
   spec.description   = "Provides an easy way to communicate with the cardgate REST API"
-  spec.homepage      = "https://github.com/yourivdlans/cardgate-rails"
+  spec.homepage      = "https://github.com/yourivdlans/cardgate"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
