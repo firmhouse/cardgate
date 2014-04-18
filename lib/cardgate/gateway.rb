@@ -1,3 +1,5 @@
+require 'faraday_middleware'
+
 module Cardgate
 
   class Gateway
@@ -16,11 +18,23 @@ module Cardgate
       environment.to_sym == :test
     end
 
-    def request_url
-      if self.class.is_test_environment?
+    def self.request_url
+      if self.is_test_environment?
         Cardgate::TEST_URL
       else
         Cardgate::LIVE_URL
+      end
+    end
+
+    def self.connection
+      raise Cardgate::Exception, 'Merchant and/or API key not set' if !self.merchant || !self.api_key
+
+      Faraday.new(url: self.request_url) do |faraday|
+        faraday.request  :url_encoded
+        faraday.response :json
+        faraday.response :logger
+        faraday.adapter  Faraday.default_adapter
+        faraday.basic_auth self.merchant, self.api_key
       end
     end
 
