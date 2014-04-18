@@ -1,4 +1,4 @@
-# Cardgate::Rails
+# Cardgate
 
 TODO: Write a gem description
 
