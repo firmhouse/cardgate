@@ -35,14 +35,12 @@ module CardgateTestCases
       end
     end
 
-    def test_list_no_response
+    def test_list_no_issuers
       cardgate_connection = stub_cardgate_connection(CardgateFixtures::ISSUERS_LIST_EMPTY)
 
       Cardgate::Gateway.stubs(:connection).returns(cardgate_connection)
 
-      assert_raises Cardgate::Exception do
-        Cardgate::Ideal::Issuers.list
-      end
+      assert Cardgate::Ideal::Issuers.list.empty?
     end
 
   end

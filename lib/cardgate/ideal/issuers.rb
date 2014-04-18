@@ -11,19 +11,21 @@ module Cardgate
       private
 
       def self.find_all_from_api
-        response = Cardgate::Gateway.connection.get do |req|
+        result = Cardgate::Gateway.connection.get do |req|
           req.url '/rest/v1/ideal/issuers/'
           req.headers['Accept'] = 'application/json'
         end
 
-        raise Cardgate::Exception, 'Got empty response' if response.nil?
+        response = Cardgate::Response.new(result)
 
         issuers = response.body['issuers']
 
-        raise Cardgate::Exception, 'No issuers retrieved' if issuers.empty?
-
-        issuers.map do |issuer|
-          Cardgate::Ideal::Issuer.new(issuer['id'], issuer['name'], issuer['list'])
+        if !issuers.empty?
+          issuers.map do |issuer|
+            Cardgate::Ideal::Issuer.new(issuer['id'], issuer['name'], issuer['list'])
+          end
+        else
+          []
         end
       end
 
