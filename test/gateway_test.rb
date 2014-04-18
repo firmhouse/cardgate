@@ -23,13 +23,13 @@ module CardgateTestCases
     def test_request_url_for_test
       Cardgate::Gateway.environment = :test
 
-      assert_equal 'https://api-test.cardgate.com/rest/v1/', Cardgate::Gateway.request_url
+      assert_equal 'https://api-test.cardgate.com', Cardgate::Gateway.request_url
     end
 
     def test_request_url_for_live
       Cardgate::Gateway.environment = :live
 
-      assert_equal 'https://api.cardgate.com/rest/v1/', Cardgate::Gateway.request_url
+      assert_equal 'https://api.cardgate.com', Cardgate::Gateway.request_url
     end
 
     def test_connection_raises
