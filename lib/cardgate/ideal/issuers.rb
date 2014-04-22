@@ -2,7 +2,7 @@ module Cardgate
 
   module Ideal
 
-    class Issuers < Gateway
+    class Issuers
 
       def self.list
         find_all_from_api
