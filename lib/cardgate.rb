@@ -7,6 +7,7 @@ require 'cardgate/exception'
 require 'cardgate/gateway'
 require 'cardgate/gateways'
 require 'cardgate/response'
+require 'cardgate/transaction'
 require 'cardgate/version'
 
 module Cardgate
