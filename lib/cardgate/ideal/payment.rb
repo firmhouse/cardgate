@@ -16,6 +16,10 @@ module Cardgate
         @response.body['payment']['transaction_id']
       end
 
+      def api_payment_endpoint
+        '/rest/v1/ideal/payment/'
+      end
+
       private
 
       def payment_params

@@ -29,11 +29,14 @@ module Cardgate
       self
     end
 
+    def params; raise 'Missing implementation'; end
+    def api_payment_endpoint; raise 'Missing implementation'; end
+
     private
 
     def response
       result = Cardgate::Gateway.connection.post do |req|
-        req.url '/rest/v1/ideal/payment/'
+        req.url api_payment_endpoint
         req.headers['Accept'] = 'application/json'
         req.body = params
       end
