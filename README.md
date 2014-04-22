@@ -1,6 +1,6 @@
 # Cardgate
 
-TODO: Write a gem description
+This gem is a client for the Cardgate REST API.
 
 ## Installation
 
@@ -18,7 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To configure this gem on rails, add the following initializer.
+
+```ruby
+unless Rails.env.production?
+  Cardgate::Gateway.environment = :test
+end
+
+Cardgate::Gateway.merchant = ''
+Cardgate::Gateway.api_key = ''
+```
 
 ## Contributing
 
