@@ -7,7 +7,7 @@ module Cardgate
     def initialize(response)
       if response.body.nil?
         raise Cardgate::Exception, 'Got an empty response from API'
-      elsif response.status != 200
+      elsif !response.status.between?(200, 299)
         raise Cardgate::Exception, "#{response.body["error"]["code"]}: #{response.body["error"]["message"]}"
       else
         @body = response.body
