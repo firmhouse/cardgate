@@ -1,3 +1,7 @@
+if !defined?(Rails)
+  require 'deep_merge'
+end
+
 require 'cardgate/constants'
 require 'cardgate/exception'
 require 'cardgate/gateway'
