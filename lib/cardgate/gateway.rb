@@ -30,7 +30,7 @@ module Cardgate
       raise Cardgate::Exception, 'Merchant and/or API key not set' if !self.merchant || !self.api_key
 
       Faraday.new(url: self.request_url) do |faraday|
-        faraday.request  :url_encoded
+        faraday.request  :json
         faraday.response :json
         faraday.response :logger
         faraday.adapter  Faraday.default_adapter
