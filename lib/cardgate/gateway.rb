@@ -29,7 +29,7 @@ module Cardgate
     def self.connection
       raise Cardgate::Exception, 'Merchant and/or API key not set' if !self.merchant || !self.api_key
 
-      Faraday.new(url: self.request_url) do |faraday|
+      Faraday.new(url: self.request_url, ssl: { verify: !is_test_environment? } ) do |faraday|
         faraday.request  :json
         faraday.response :json
         faraday.response :logger
