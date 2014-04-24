@@ -4,18 +4,20 @@ module CardgateTestCases
 
   class TransactionsTestCases < Test::Unit::TestCase
 
-    def stub_cardgate_connection(response)
+    def stub_cardgate_connection
       cardgate_connection do |stubs|
-        stubs.get('/rest/v1/transactions/') { [200, {}, response] }
+        stubs.get('/rest/v1/transactions/2307824') { [200, {}, CardgateFixtures::TRANSACTION_WITHOUT_CUSTOMER] }
+        stubs.get('/rest/v1/transactions/2307825') { [200, {}, CardgateFixtures::TRANSACTION_WITH_CUSTOMER] }
+        stubs.get('/rest/v1/transactions/2307826') { [200, {}, nil] }
       end
     end
 
     def test_transaction_without_customer
-      cardgate_connection = stub_cardgate_connection(CardgateFixtures::TRANSACTION_WITHOUT_CUSTOMER)
+      cardgate_connection = stub_cardgate_connection()
 
       Cardgate::Gateway.stubs(:connection).returns(cardgate_connection)
 
-      transaction = Cardgate::Transactions.new(2307824).find
+      transaction = Cardgate::Transactions.find(2307824)
 
       assert transaction.is_a? Cardgate::Transaction
 
@@ -31,11 +33,11 @@ module CardgateTestCases
     end
 
     def test_transaction_with_customer
-      cardgate_connection = stub_cardgate_connection(CardgateFixtures::TRANSACTION_WITH_CUSTOMER)
+      cardgate_connection = stub_cardgate_connection()
 
       Cardgate::Gateway.stubs(:connection).returns(cardgate_connection)
 
-      transaction = Cardgate::Transactions.new(2307824).find
+      transaction = Cardgate::Transactions.find(2307825)
 
       assert_equal 'Youri', transaction.first_name
       assert_equal 'van der Lans', transaction.last_name
@@ -50,12 +52,12 @@ module CardgateTestCases
     end
 
     def test_empty_transaction
-      cardgate_connection = stub_cardgate_connection(nil)
+      cardgate_connection = stub_cardgate_connection()
 
       Cardgate::Gateway.stubs(:connection).returns(cardgate_connection)
 
       assert_raises Cardgate::Exception do
-        transaction = Cardgate::Transactions.new(2307824).find
+        transaction = Cardgate::Transactions.find(2307826)
       end
     end
 

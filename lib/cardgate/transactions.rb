@@ -2,15 +2,9 @@ module Cardgate
 
   class Transactions
 
-    attr_reader :id
-
-    def initialize(id)
-      @id = id
-    end
-
-    def find
+    def self.find(transaction_id)
       result = Cardgate::Gateway.connection.get do |req|
-        req.url '/rest/v1/transactions/'
+        req.url "/rest/v1/transactions/#{transaction_id}"
         req.headers['Accept'] = 'application/json'
       end
 
