@@ -12,8 +12,6 @@ module Cardgate
       attr_accessor :api_key
     end
 
-    self.environment = :test
-
     def self.is_test_environment?
       environment.to_sym == :test
     end
