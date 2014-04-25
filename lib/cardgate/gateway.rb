@@ -13,7 +13,7 @@ module Cardgate
     end
 
     def self.is_test_environment?
-      environment.to_sym == :test
+      self.environment == :test
     end
 
     def self.request_url
