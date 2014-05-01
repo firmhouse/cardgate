@@ -4,7 +4,7 @@ module Cardgate
 
     def self.find(transaction_id)
       result = Cardgate::Gateway.connection.get do |req|
-        req.url "/rest/v1/transactions/#{transaction_id}"
+        req.url "/rest/v1/transactions/#{transaction_id}/"
         req.headers['Accept'] = 'application/json'
       end
 
