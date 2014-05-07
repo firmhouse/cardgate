@@ -18,7 +18,7 @@ module Cardgate
     end
 
     def successful?
-      [200, 210].include?(self.status)
+      [200, 210].include?(self.status.to_i)
     end
 
     private
