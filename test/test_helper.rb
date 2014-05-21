@@ -12,6 +12,6 @@ def cardgate_connection
 
     faraday.adapter :test do |stubs|
       yield(stubs)
-    end 
+    end
   end
 end
