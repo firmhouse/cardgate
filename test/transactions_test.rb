@@ -6,9 +6,9 @@ module CardgateTestCases
 
     def stub_cardgate_connection
       cardgate_connection do |stubs|
-        stubs.get('/rest/v1/transactions/2307824') { [200, {}, CardgateFixtures::TRANSACTION_WITHOUT_CUSTOMER] }
-        stubs.get('/rest/v1/transactions/2307825') { [200, {}, CardgateFixtures::TRANSACTION_WITH_CUSTOMER] }
-        stubs.get('/rest/v1/transactions/2307826') { [200, {}, nil] }
+        stubs.get('/rest/v1/transactions/2307824/') { [200, {}, CardgateFixtures::TRANSACTION_WITHOUT_CUSTOMER] }
+        stubs.get('/rest/v1/transactions/2307825/') { [200, {}, CardgateFixtures::TRANSACTION_WITH_CUSTOMER] }
+        stubs.get('/rest/v1/transactions/2307826/') { [200, {}, nil] }
       end
     end
 
