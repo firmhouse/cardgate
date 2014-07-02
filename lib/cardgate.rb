@@ -13,4 +13,5 @@ require 'cardgate/payment'
 require 'cardgate/refund'
 require 'cardgate/version'
 
+require 'cardgate/creditcard/creditcard'
 require 'cardgate/ideal/ideal'
