@@ -38,6 +38,11 @@ module CardgateTestCases
       end
     end
 
+    def test_request_logger
+      Cardgate::Gateway.request_logger = true
+
+      assert_equal true, Cardgate::Gateway.request_logger
+    end
   end
 
 end
