@@ -12,6 +12,11 @@ module Cardgate
         @list = list
       end
 
+
+      def ==(o)
+        o.class == self.class && o.id == id
+      end
+      alias_method :eql?, :==
     end
 
   end
