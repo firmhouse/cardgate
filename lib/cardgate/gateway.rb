@@ -5,11 +5,7 @@ module Cardgate
   class Gateway
 
     class << self
-      attr_accessor :environment
-
-      attr_accessor :merchant
-
-      attr_accessor :api_key
+      attr_accessor :environment, :merchant, :api_key, :request_logger
     end
 
     def self.is_test_environment?
@@ -30,7 +26,7 @@ module Cardgate
       Faraday.new(url: self.request_url, ssl: { verify: !is_test_environment? } ) do |faraday|
         faraday.request  :json
         faraday.response :json
-        faraday.response :logger
+        faraday.response :logger if request_logger == true
         faraday.adapter  Faraday.default_adapter
         faraday.basic_auth self.merchant, self.api_key
       end

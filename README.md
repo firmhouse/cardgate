@@ -27,6 +27,7 @@ end
 
 Cardgate::Gateway.merchant = ''
 Cardgate::Gateway.api_key = ''
+Cardgate::Gateway.request_logger = true # or false if you want to disable request logging
 ```
 
 ## Contributing
