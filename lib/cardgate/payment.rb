@@ -2,7 +2,7 @@ module Cardgate
 
   class Payment
 
-    attr_accessor :site_id, :return_url, :ref, :amount, :currency,
+    attr_accessor :site_id, :return_url, :control_url, :ref, :amount, :currency,
                   :language, :ip_address, :first_name, :last_name, :company_name,
                   :address, :city, :state, :postal_code, :country_code, :phone_number, :email,
                   :description, :provider
@@ -20,6 +20,7 @@ module Cardgate
           currency: @currency,
           ref: @ref,
           return_url: @return_url,
+          control_url: @control_url,
           currency: @currency,
           language: @language,
           ip_address: @ip_address,
